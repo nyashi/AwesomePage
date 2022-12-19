@@ -6,7 +6,7 @@ function m() {
     'https://youtu.be/AfuRkblLiHE'
   ];
 const randomIndex = Math.floor(Math.random() * URLs.length);
-  const randomURL = getRandomURL();
+  
   location.href = URLs[randomIndex];
 }
 function u(){
@@ -17,7 +17,7 @@ const URLs=[
      'https://youtu.be/bFq0FfkAEzc'
 ]
 const randomIndex = Math.floor(Math.random() * URLs.length);
-  const randomURL = getRandomURL();
+  
   location.href = URLs[randomIndex];
 }
 
@@ -31,6 +31,6 @@ const URLs=[
    
 ]
 const randomIndex = Math.floor(Math.random() * URLs.length);
-  const randomURL = getRandomURL();
+  
   location.href = URLs[randomIndex];
 }
