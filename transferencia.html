@@ -41,6 +41,16 @@
     <input type="submit" value="Enviar">
   </form>
   <script>
+const form = document.querySelector('form');
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const nombre = form.elements.nombre.value;
+      if (nombre === 'Liz') {
+        window.location.href = 'https://google.com';
+      }
+    });
+</script>
+  <script>
     // Obtener el valor del parámetro "nombre" de la URL
     const urlParams = new URLSearchParams(window.location.search);
     const nombre = urlParams.get('nombre');
@@ -50,3 +60,4 @@
   </script>
 </body>
 </html>
+
