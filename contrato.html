@@ -36,9 +36,10 @@ function dibujarFirma(id) {
 		canvas.touchX = x;
 		canvas.touchY = y;
 	},{ passive: false });
-        canvas.addEventListener("touchend", function(e) {
-		canvas.touchX = e.changedTouches[0].pageX - canvas.offsetLeft;
-		canvas.touchY = e.changedTouches[0].pageY - canvas.offsetTop;
+        
+         canvas.addEventListener("touchstart", function(e) {
+		canvas.touchX = e.targetTouches[0].pageX - canvas.offsetLeft;
+		canvas.touchY = e.targetTouches[0].pageY - canvas.offsetTop;
 	});
 	// Manejar el evento mousemove del canvas para dibujar la firma
 	canvas.addEventListener("mousemove", function(e) {
