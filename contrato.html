@@ -212,7 +212,7 @@ function generarUrlCompartir() {
 				urlCompartida += "?";
 				hayDatos = true;
 			}
-			urlCompartida += "firma-comprador-p=" + firmaComprador;
+			urlCompartida += "firma-comprador-p=" + encodeURIComponent(firmaComprador);
 		});
        }
   location.href=urlCompartida;
