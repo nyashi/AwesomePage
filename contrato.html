@@ -204,6 +204,7 @@ function generarUrlCompartir() {
 			urlCompartida += "firma-comprador=" + firmaComprador;
 		}
 	} else {
+               try{
 		html2canvas(inputFirmaComprador).then(function(canvas) {
 			var firmaComprador = canvas.toDataURL();
 			if (hayDatos) {
@@ -214,6 +215,9 @@ function generarUrlCompartir() {
 			}
 			urlCompartida += "firma-comprador-p=" + encodeURIComponent(firmaComprador);
 		});
+                }catch(e){
+                document.write(e);
+                }
        }
   location.href=urlCompartida;
 }
