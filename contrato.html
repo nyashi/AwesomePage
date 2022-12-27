@@ -15,8 +15,8 @@ function dibujarFirma(id) {
 
 	// Asignar el mismo ancho y alto que el input
 	canvas.width = input.offsetWidth;
-	canvas.height = input.offsetHeight;
-
+	canvas.height = input.offsetHeight*2;
+        
 	// Agregar el canvas al elemento padre y ocultar el input
 	padre.replaceChild(canvas, input);
 	input.style.display = "none";
@@ -25,22 +25,27 @@ function dibujarFirma(id) {
 		// Obtener la posición del dedo
 		var x = e.targetTouches[0].pageX - canvas.offsetLeft;
 		var y = e.targetTouches[0].pageY - canvas.offsetTop;
-
+                if(dibujando){
 		// Dibujar una linea desde la posición anterior hasta la posición actual del dedo
 		ctx.beginPath();
 		ctx.moveTo(canvas.touchX, canvas.touchY);
 		ctx.lineTo(x, y);
 		ctx.stroke();
-
+                
 		// Guardar la posición actual del dedo como la posición anterior para la próxima iteración
 		canvas.touchX = x;
 		canvas.touchY = y;
+                }
 	},{ passive: false });
         
          canvas.addEventListener("touchstart", function(e) {
 		canvas.touchX = e.targetTouches[0].pageX - canvas.offsetLeft;
 		canvas.touchY = e.targetTouches[0].pageY - canvas.offsetTop;
+                dibujando=true;
 	});
+        canvas.addEvent("touchend",function(e){
+          var dibujando=false;
+        });
 	// Manejar el evento mousemove del canvas para dibujar la firma
 	canvas.addEventListener("mousemove", function(e) {
 		// Obtener la posición del cursor
@@ -133,7 +138,7 @@ function descargarContrato() {
 	var element = document.getElementById("contrato");
 	var rect = element.getBoundingClientRect();
 	canvas.width = rect.width;
-	canvas.height = rect.height*2;
+	canvas.height = rect.height;
 
 	// Dibujar el contenido del contrato en el canvas
 	html2canvas(element).then(function(canvas) {
