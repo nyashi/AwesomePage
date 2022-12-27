@@ -4,6 +4,9 @@
         <link rel="stylesheet" type="text/css" href="contrato.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-alpha1/html2canvas.min.js"></script>
         <script>
+window.onerror = function(message, source, lineno, colno, error) {
+   alert(message);
+}
 function procesarConsulta() {
 	// Obtener la cadena de consulta de la URL
 	var consulta = location.search;
@@ -204,7 +207,7 @@ function generarUrlCompartir() {
 			urlCompartida += "firma-comprador=" + firmaComprador;
 		}
 	} else {
-               try{
+               
 		html2canvas(inputFirmaComprador).then(function(canvas) {
 			var firmaComprador = canvas.toDataURL();
 			if (hayDatos) {
@@ -215,9 +218,7 @@ function generarUrlCompartir() {
 			}
 			urlCompartida += "firma-comprador-p=" + encodeURIComponent(firmaComprador);
 		});
-                }catch(e){
-                document.write(e);
-                }
+             
        }
   location.href=urlCompartida;
 }
