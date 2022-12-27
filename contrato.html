@@ -33,6 +33,26 @@ function procesarConsulta() {
 		// Cargar la firma en el input
 		document.querySelector("#firma_comprador").value = objeto["firma-comprador"];
 	}
+        if (objeto["firma-vendedor-p"]) {
+		// Crear una imagen con la firma
+		var imgFirmaVendedor = document.createElement("img");
+		imgFirmaVendedor.id = "firma-vendedor";
+		imgFirmaVendedor.src = objeto["firma-vendedor-p"];
+
+		// Reemplazar el input de la firma del vendedor por la imagen
+		var inputFirmaVendedor = document.querySelector("#firma-vendedor");
+		inputFirmaVendedor.parentNode.replaceChild(imgFirmaVendedor, inputFirmaVendedor);
+		
+	}
+	if (objeto["firma-comprador-p"]) {
+		// Crear una imagen con la firma
+		var imgFirmaComprador = document.createElement("img");
+		imgFirmaComprador.id = "firma-comprador";
+		imgFirmaComprador.src = objeto["firma-comprador-p"];
+		// Reemplazar el input de la firma del comprador por la imagen
+		var inputFirmaComprador = document.querySelector("#firma-comprador");
+		inputFirmaComprador.parentNode.replaceChild(imgFirmaComprador,inputFirmaComprador);
+}
 }
 
 function dibujarFirma(id) {
