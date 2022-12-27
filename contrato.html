@@ -18,7 +18,7 @@ function dibujarFirma(id) {
 	canvas.height = input.offsetHeight;
 
 	// Agregar el canvas al elemento padre y ocultar el input
-	padre.insertBefore(canvas, input);
+	padre.replaceChild(canvas, input);
 	input.style.display = "none";
         canvas.addEventListener("touchmove", function(e) {
 		// Obtener la posición del dedo
