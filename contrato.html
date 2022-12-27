@@ -177,7 +177,7 @@ function generarUrlCompartir() {
 				urlCompartida += "?";
 				hayDatos = true;
 			}
-			urlCompartida += "firma-vendedor=" + firmaVendedor;
+			urlCompartida += "firma-vendedor=" + encodeURIComponent(firmaVendedor);
 		}
 	} else {
 		html2canvas(inputFirmaVendedor).then(function(canvas) {
@@ -188,7 +188,7 @@ function generarUrlCompartir() {
 				urlCompartida += "?";
 				hayDatos = true;
 			}
-			urlCompartida += "firma-vendedor-p=" + firmaVendedor;
+			urlCompartida += "firma-vendedor-p=" + encodeURIComponent(firmaVendedor);
 		});
 	}
 	var inputFirmaComprador = document.querySelector("#firma_comprador");
