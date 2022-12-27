@@ -4,6 +4,29 @@
         <link rel="stylesheet" type="text/css" href="contrato.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-alpha1/html2canvas.min.js"></script>
         <script>
+function procesarConsulta() {
+	// Obtener la cadena de consulta de la URL
+	var consulta = location.search;
+
+	// Dividir la cadena de consulta en pares clave-valor
+	var pares = consulta.substring(1).split("&");
+
+	// Crear un objeto con los pares clave-valor
+	var objeto = pares.reduce(function(acumulador, par) {
+		var claveValor = par.split("=");
+		acumulador[claveValor[0]] = claveValor[1];
+		return acumulador;
+	}, {});
+
+	// Rellenar los campos de nombre con los valores del objeto
+	if (objeto.vendedor) {
+		document.querySelector("#nombre-vendedor").value = objeto.vendedor;
+	}
+	if (objeto.comprador) {
+		document.querySelector("#nombre-comprador").value = objeto.comprador;
+	}
+}
+
 function dibujarFirma(id) {
 	// Obtener el input y el elemento padre
 	var input = document.querySelector("#" + id);
@@ -72,7 +95,7 @@ function dibujarFirma(id) {
 </script>
 
 </head>
-<body>
+<body onload="procesarConsulta();">
         <div class="contrato" id="contrato">
 	<h1>Contrato de venta de alma por novia bonita</h1>
 	<p>Entre yo, <input type="text" name="vendedor" placeholder="nombre del vendedor">, como vendedor, y</p><p> <input type="text" name="comprador" placeholder="nombre del comprador">, como comprador, acordamos lo siguiente:</p>
