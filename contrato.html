@@ -145,10 +145,78 @@ function dibujarFirma(id) {
         <button onclick="dibujarFirma('firma_vendedor')">Dibujar firma vendedor</button>
         <button onclick="dibujarFirma('firma_comprador')">Dibujar firma comprador</button>
         <button onclick="descargarContrato()">Descargar contrato</button>
-
+        <button id="btn-generar-url" type="button">Generar URL</button>
 
 </body>
 <script>
+function generarUrlCompartir() {
+	var vendedor = document.querySelector("#nombre-vendedor").value;
+	var comprador = document.querySelector("#nombre-comprador").value;
+	var urlCompartida = location.origin + location.pathname;
+	var hayDatos = false;
+	if (vendedor) {
+		hayDatos = true;
+		urlCompartida += "?vendedor=" + vendedor;
+	}
+	if (comprador) {
+		if (hayDatos) {
+			urlCompartida += "&";
+		} else {
+			urlCompartida += "?";
+			hayDatos = true;
+		}
+		urlCompartida += "comprador=" + comprador;
+	}
+	var inputFirmaVendedor = document.querySelector("#firma-vendedor");
+	if (inputFirmaVendedor.tagName === "INPUT") {
+		var firmaVendedor = inputFirmaVendedor.value;
+		if (firmaVendedor) {
+			if (hayDatos) {
+				urlCompartida += "&";
+			} else {
+				urlCompartida += "?";
+				hayDatos = true;
+			}
+			urlCompartida += "firma-vendedor=" + firmaVendedor;
+		}
+	} else {
+		html2canvas(inputFirmaVendedor).then(function(canvas) {
+			var firmaVendedor = canvas.toDataURL();
+			if (hayDatos) {
+				urlCompartida += "&";
+			} else {
+				urlCompartida += "?";
+				hayDatos = true;
+			}
+			urlCompartida += "firma-vendedor-p=" + firmaVendedor;
+		});
+	}
+	var inputFirmaComprador = document.querySelector("#firma-comprador");
+	if (inputFirmaComprador.tagName === "INPUT") {
+		var firmaComprador = inputFirmaComprador.value;
+		if (firmaComprador) {
+			if (hayDatos) {
+				urlCompartida += "&";
+			} else {
+				urlCompartida += "?";
+				hayDatos = true;
+			}
+			urlCompartida += "firma-comprador=" + firmaComprador;
+		}
+	} else {
+		html2canvas(inputFirmaComprador).then(function(canvas) {
+			var firmaComprador = canvas.toDataURL();
+			if (hayDatos) {
+				urlCompartida += "&";
+			} else {
+				urlCompartida += "?";
+				hayDatos = true;
+			}
+			urlCompartida += "firma-comprador-p=" + firmaComprador;
+		});
+       }
+  alert(urlCompartida);
+}
 function descargarContrato() {
 	// Ocultar el botón de descargar contrato
 	document.querySelector("button").style.display = "none";
