@@ -40,7 +40,7 @@ function procesarConsulta() {
 		imgFirmaVendedor.src = objeto["firma-vendedor-p"];
 
 		// Reemplazar el input de la firma del vendedor por la imagen
-		var inputFirmaVendedor = document.querySelector("#firma-vendedor");
+		var inputFirmaVendedor = document.querySelector("#firma_vendedor");
 		inputFirmaVendedor.parentNode.replaceChild(imgFirmaVendedor, inputFirmaVendedor);
 		
 	}
@@ -50,7 +50,7 @@ function procesarConsulta() {
 		imgFirmaComprador.id = "firma_comprador";
 		imgFirmaComprador.src = objeto["firma-comprador-p"];
 		// Reemplazar el input de la firma del comprador por la imagen
-		var inputFirmaComprador = document.querySelector("#firma-comprador");
+		var inputFirmaComprador = document.querySelector("#firma_comprador");
 		inputFirmaComprador.parentNode.replaceChild(imgFirmaComprador,inputFirmaComprador);
 }
 }
