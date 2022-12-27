@@ -26,4 +26,43 @@
         <button onclick="descargarContrato()">Descargar contrato</button>
 
 </body>
+<script>
+function descargarContrato() {
+	// Ocultar el botón de descargar contrato
+	document.querySelector("button").style.display = "none";
+
+	// Obtener todos los inputs del formulario
+	var inputs = document.querySelectorAll("input");
+
+	// Recorrer cada input y reemplazarlo por un párrafo con el valor del input
+	inputs.forEach(function(input) {
+		var p = document.createElement("p");
+		p.innerHTML = input.value;
+		input.parentNode.replaceChild(p, input);
+	});
+
+	// Crear un elemento canvas para dibujar el contrato
+	var canvas = document.createElement("canvas");
+	var ctx = canvas.getContext("2d");
+
+	// Obtener la altura y anchura del contenido del contrato
+	var element = document.querySelector("body");
+	var rect = element.getBoundingClientRect();
+	canvas.width = rect.width;
+	canvas.height = rect.height;
+
+	// Dibujar el contenido del contrato en el canvas
+	html2canvas(element).then(function(canvas) {
+		// Mostrar el botón de descargar contrato de nuevo
+		document.querySelector("button").style.display = "block";
+
+		// Descargar la imagen del contrato
+		var link = document.createElement("a");
+		link.download = "contrato.png";
+		link.href = canvas.toDataURL();
+		link.click();
+	});
+}
+
+</script>
 </html>
