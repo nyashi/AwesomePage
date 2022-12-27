@@ -63,8 +63,8 @@ function dibujarFirma(id) {
 	<p>
 		Lea nuestros <a href="#" onclick="confirm('Términos y condiciones: Este contrato es válido por toda la eternidad y no puede ser revocado por ninguna de las partes involucradas. El vendedor renuncia a cualquier derecho o claim sobre su alma una vez que se haya transferido la propiedad al comprador. El comprador se compromete a respetar los derechos y libertades del vendedor mientras este viva, siempre y cuando el vendedor cumpla con sus obligaciones en este contrato.')">términos y condiciones</a> antes de firmar.
 	</p>
-	<p>Firma del vendedor: <input type="text" name="firma_vendedor" placeholder="firma del vendedor"></p>
-	<p>Firma del comprador: <input type="text" name="firma_comprador" placeholder="firma del comprador"></p>
+	<p>Firma del vendedor: <input type="text" id="firma_vendedor" name="firma_vendedor" placeholder="firma del vendedor"></p>
+	<p>Firma del comprador: <input type="text" id="firma_comprador" name="firma_comprador" placeholder="firma del comprador"></p>
         </div>
         <button onclick="dibujarFirma('firma_vendedor')">Dibujar firma vendedor</button>
         <button onclick="dibujarFirma('firma_comprador')">Dibujar firma comprador</button>
