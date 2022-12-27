@@ -25,6 +25,14 @@ function procesarConsulta() {
 	if (objeto.comprador) {
 		document.querySelector("#nombre-comprador").value = objeto.comprador;
 	}
+        if (objeto["firma-vendedor"]) {
+		// Cargar la firma en el input
+		document.querySelector("#firma_vendedor").value = objeto["firma-vendedor"];
+	}
+	if (objeto["firma-comprador"]) {
+		// Cargar la firma en el input
+		document.querySelector("#firma_comprador").value = objeto["firma-comprador"];
+	}
 }
 
 function dibujarFirma(id) {
@@ -149,7 +157,7 @@ function descargarContrato() {
 		// Crear una imagen con el atributo src establecido con la imagen en formato base64
 		var img = document.createElement("img");
 		img.src = imagen;
-
+                img.id=canvas.id;
 		// Reemplazar el canvas por la imagen
 		canvas.parentNode.replaceChild(img, canvas);
 	});
