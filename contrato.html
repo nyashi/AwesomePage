@@ -70,7 +70,7 @@ function dibujarFirma(id) {
 	// Asignar el mismo ancho y alto que el input
 	canvas.width = input.offsetWidth;
 	canvas.height = input.offsetHeight*2;
-        
+        canvas.id=id;
 	// Agregar el canvas al elemento padre y ocultar el input
 	padre.replaceChild(canvas, input);
 	input.style.display = "none";
@@ -97,7 +97,7 @@ function dibujarFirma(id) {
 		canvas.touchY = e.targetTouches[0].pageY - canvas.offsetTop;
                 dibujando=true;
 	});
-        canvas.addEvent("touchend",function(e){
+        canvas.addEventListener("touchend",function(e){
           var dibujando=false;
         });
 	// Manejar el evento mousemove del canvas para dibujar la firma
