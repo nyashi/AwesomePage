@@ -3,7 +3,47 @@
 	<title>Contrato de venta de alma por novia bonita</title>
         <link rel="stylesheet" type="text/css" href="contrato.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-alpha1/html2canvas.min.js"></script>
+        <script>function dibujarFirma(id) {
+	// Obtener el input y el elemento padre
+	var input = document.querySelector("#" + id);
+	var padre = input.parentNode;
 
+	// Crear un elemento canvas para dibujar la firma
+	var canvas = document.createElement("canvas");
+	var ctx = canvas.getContext("2d");
+
+	// Asignar el mismo ancho y alto que el input
+	canvas.width = input.offsetWidth;
+	canvas.height = input.offsetHeight;
+
+	// Agregar el canvas al elemento padre y ocultar el input
+	padre.insertBefore(canvas, input);
+	input.style.display = "none";
+
+	// Manejar el evento mousemove del canvas para dibujar la firma
+	canvas.addEventListener("mousemove", function(e) {
+		// Obtener la posición del cursor
+		var x = e.offsetX;
+		var y = e.offsetY;
+
+		// Dibujar una linea desde la posición anterior hasta la posición actual del cursor
+		ctx.beginPath();
+		ctx.moveTo(canvas.mouseX, canvas.mouseY);
+		ctx.lineTo(x, y);
+		ctx.stroke();
+
+		// Guardar la posición actual del cursor como la posición anterior para la próxima iteración
+		canvas.mouseX = x;
+		canvas.mouseY = y;
+	});
+
+	// Manejar el evento mousedown del canvas para guardar la posición inicial del cursor
+	canvas.addEventListener("mousedown", function(e) {
+		canvas.mouseX = e.offsetX;
+		canvas.mouseY = e.offsetY;
+	});
+}
+</script>
 
 </head>
 <body>
@@ -48,47 +88,7 @@ function descargarContrato() {
 		// Reemplazar el contenido del elemento padre por la nueva cadena de texto
 		padre.innerHTML = nuevoTexto;
 	});
-        function dibujarFirma(id) {
-	// Obtener el input y el elemento padre
-	var input = document.querySelector("#" + id);
-	var padre = input.parentNode;
-
-	// Crear un elemento canvas para dibujar la firma
-	var canvas = document.createElement("canvas");
-	var ctx = canvas.getContext("2d");
-
-	// Asignar el mismo ancho y alto que el input
-	canvas.width = input.offsetWidth;
-	canvas.height = input.offsetHeight;
-
-	// Agregar el canvas al elemento padre y ocultar el input
-	padre.insertBefore(canvas, input);
-	input.style.display = "none";
-
-	// Manejar el evento mousemove del canvas para dibujar la firma
-	canvas.addEventListener("mousemove", function(e) {
-		// Obtener la posición del cursor
-		var x = e.offsetX;
-		var y = e.offsetY;
-
-		// Dibujar una linea desde la posición anterior hasta la posición actual del cursor
-		ctx.beginPath();
-		ctx.moveTo(canvas.mouseX, canvas.mouseY);
-		ctx.lineTo(x, y);
-		ctx.stroke();
-
-		// Guardar la posición actual del cursor como la posición anterior para la próxima iteración
-		canvas.mouseX = x;
-		canvas.mouseY = y;
-	});
-
-	// Manejar el evento mousedown del canvas para guardar la posición inicial del cursor
-	canvas.addEventListener("mousedown", function(e) {
-		canvas.mouseX = e.offsetX;
-		canvas.mouseY = e.offsetY;
-	});
-}
-
+        
 	// Crear un elemento canvas para dibujar el contrato
 	var canvas = document.createElement("canvas");
 	var ctx = canvas.getContext("2d");
