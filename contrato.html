@@ -36,7 +36,7 @@ function procesarConsulta() {
         if (objeto["firma-vendedor-p"]) {
 		// Crear una imagen con la firma
 		var imgFirmaVendedor = document.createElement("img");
-		imgFirmaVendedor.id = "firma-vendedor";
+		imgFirmaVendedor.id = "firma_vendedor";
 		imgFirmaVendedor.src = objeto["firma-vendedor-p"];
 
 		// Reemplazar el input de la firma del vendedor por la imagen
@@ -47,7 +47,7 @@ function procesarConsulta() {
 	if (objeto["firma-comprador-p"]) {
 		// Crear una imagen con la firma
 		var imgFirmaComprador = document.createElement("img");
-		imgFirmaComprador.id = "firma-comprador";
+		imgFirmaComprador.id = "firma_comprador";
 		imgFirmaComprador.src = objeto["firma-comprador-p"];
 		// Reemplazar el input de la firma del comprador por la imagen
 		var inputFirmaComprador = document.querySelector("#firma-comprador");
