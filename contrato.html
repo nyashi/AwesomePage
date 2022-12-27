@@ -167,7 +167,7 @@ function generarUrlCompartir() {
 		}
 		urlCompartida += "comprador=" + comprador;
 	}
-	var inputFirmaVendedor = document.querySelector("#firma-vendedor");
+	var inputFirmaVendedor = document.querySelector("#firma_vendedor");
 	if (inputFirmaVendedor.tagName === "INPUT") {
 		var firmaVendedor = inputFirmaVendedor.value;
 		if (firmaVendedor) {
@@ -191,7 +191,7 @@ function generarUrlCompartir() {
 			urlCompartida += "firma-vendedor-p=" + firmaVendedor;
 		});
 	}
-	var inputFirmaComprador = document.querySelector("#firma-comprador");
+	var inputFirmaComprador = document.querySelector("#firma_comprador");
 	if (inputFirmaComprador.tagName === "INPUT") {
 		var firmaComprador = inputFirmaComprador.value;
 		if (firmaComprador) {
