@@ -99,8 +99,9 @@ function descargarContrato() {
         
 	// Recorrer todos los input del formulario y obtener su valor y elemento padre
 	document.querySelectorAll("input").forEach(function(input) {
-		var valor = document.querySelector("input").value;
-		var padre = document.querySelector("input").parentNode;
+		var inp= document.querySelector("input");
+                var valor=inp.value;
+		var padre = inp.parentNode;
 
 		// Crear una nueva cadena de texto que sea igual al contenido del elemento padre, reemplazando el input por su valor
 		var nuevoTexto = padre.innerHTML.replace(input.outerHTML, valor);
