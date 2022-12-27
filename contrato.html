@@ -31,23 +31,16 @@ function descargarContrato() {
 	// Ocultar el botón de descargar contrato
 	document.querySelector("button").style.display = "none";
 
-	// Crear una lista vacía de inputs
-	var inputs = [];
+	// Recorrer todos los input del formulario y obtener su valor y elemento padre
+	document.querySelectorAll("input").forEach(function(input) {
+		var valor = input.value;
+		var padre = input.parentNode;
 
-	// Recorrer todos los párrafos del formulario y guardar cada uno en la lista "inputs"
-	document.querySelectorAll("p").forEach(function(p) {
-		inputs.push({
-			valor: p.innerHTML,
-			padre: p.parentNode
-		});
-	});
+		// Crear una nueva cadena de texto que sea igual al contenido del elemento padre, reemplazando el input por su valor
+		var nuevoTexto = padre.innerHTML.replace(input.outerHTML, valor);
 
-	// Reemplazar cada párrafo por un input con el valor guardado en la lista "inputs"
-	inputs.forEach(function(input) {
-		var i = document.createElement("input");
-		i.type = "text";
-		i.value = input.valor;
-		input.padre.replaceChild(i, input.padre.firstChild);
+		// Reemplazar el contenido del elemento padre por la nueva cadena de texto
+		padre.innerHTML = nuevoTexto;
 	});
 
 	// Crear un elemento canvas para dibujar el contrato
