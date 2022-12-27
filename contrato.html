@@ -157,6 +157,21 @@ function generarUrlCompartir() {
 	var comprador = document.querySelector("#nombre-comprador").value;
 	var urlCompartida = location.origin + location.pathname;
 	var hayDatos = false;
+        var canvasList = document.querySelectorAll(".contrato canvas");
+
+	// Recorrer cada canvas y reemplazarlo por una imagen con la imagen del canvas
+	canvasList.forEach(function(can) {
+		// Obtener la imagen del canvas en formato base64
+                var canvas=document.querySelector(".contrato canvas");
+		var imagen = canvas.toDataURL();
+
+		// Crear una imagen con el atributo src establecido con la imagen en formato base64
+		var img = document.createElement("img");
+		img.src = imagen;
+                img.id=canvas.id;
+		// Reemplazar el canvas por la imagen
+		canvas.parentNode.replaceChild(img, canvas);
+	});
 	if (vendedor) {
 		hayDatos = true;
 		urlCompartida += "?vendedor=" + vendedor;
