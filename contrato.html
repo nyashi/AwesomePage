@@ -182,7 +182,7 @@ function generarUrlCompartir() {
 			}
 			urlCompartida += "firma-vendedor=" + encodeURIComponent(firmaVendedor);
 		}
-	} else {
+	} else if(inputFirmaVendedor.tagName === "CANVAS") {
 		        var canvas=inputFirmaVendedor;
 			var firmaVendedor = canvas.toDataURL();
 			if (hayDatos) {
@@ -205,7 +205,7 @@ function generarUrlCompartir() {
 			}
 			urlCompartida += "firma-comprador=" + encodeURIComponent(firmaComprador);
 		}
-	} else {
+	} else if(inputFirmaComprador.tagName === "CANVAS"){
                
 		        var canvas=inputFirmaComprador;
 			var firmaComprador = canvas.toDataURL();
