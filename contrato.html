@@ -21,6 +21,7 @@ function dibujarFirma(id) {
 	padre.replaceChild(canvas, input);
 	input.style.display = "none";
         canvas.addEventListener("touchmove", function(e) {
+                e.preventDefault();
 		// Obtener la posición del dedo
 		var x = e.targetTouches[0].pageX - canvas.offsetLeft;
 		var y = e.targetTouches[0].pageY - canvas.offsetTop;
@@ -34,7 +35,7 @@ function dibujarFirma(id) {
 		// Guardar la posición actual del dedo como la posición anterior para la próxima iteración
 		canvas.touchX = x;
 		canvas.touchY = y;
-	});
+	},{ passive: false });
         canvas.addEventListener("touchend", function(e) {
 		canvas.touchX = e.changedTouches[0].pageX - canvas.offsetLeft;
 		canvas.touchY = e.changedTouches[0].pageY - canvas.offsetTop;
