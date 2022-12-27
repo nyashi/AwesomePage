@@ -157,21 +157,6 @@ function generarUrlCompartir() {
 	var comprador = document.querySelector("#nombre-comprador").value;
 	var urlCompartida = location.origin + location.pathname;
 	var hayDatos = false;
-        var canvasList = document.querySelectorAll(".contrato canvas");
-
-	// Recorrer cada canvas y reemplazarlo por una imagen con la imagen del canvas
-	canvasList.forEach(function(can) {
-		// Obtener la imagen del canvas en formato base64
-                var canvas=document.querySelector(".contrato canvas");
-		var imagen = canvas.toDataURL();
-
-		// Crear una imagen con el atributo src establecido con la imagen en formato base64
-		var img = document.createElement("img");
-		img.src = imagen;
-                img.id=canvas.id;
-		// Reemplazar el canvas por la imagen
-		canvas.parentNode.replaceChild(img, canvas);
-	});
 	if (vendedor) {
 		hayDatos = true;
 		urlCompartida += "?vendedor=" + vendedor;
@@ -198,7 +183,7 @@ function generarUrlCompartir() {
 			urlCompartida += "firma-vendedor=" + encodeURIComponent(firmaVendedor);
 		}
 	} else {
-		html2canvas(inputFirmaVendedor).then(function(canvas) {
+		        var canvas=inputFirmaVendedor;
 			var firmaVendedor = canvas.toDataURL();
 			if (hayDatos) {
 				urlCompartida += "&";
@@ -207,7 +192,6 @@ function generarUrlCompartir() {
 				hayDatos = true;
 			}
 			urlCompartida += "firma-vendedor-p=" + firmaVendedor;
-		});
 	}
 	var inputFirmaComprador = document.querySelector("#firma_comprador");
 	if (inputFirmaComprador.tagName === "INPUT") {
@@ -219,11 +203,11 @@ function generarUrlCompartir() {
 				urlCompartida += "?";
 				hayDatos = true;
 			}
-			urlCompartida += "firma-comprador=" + firmaComprador;
+			urlCompartida += "firma-comprador=" + encodeURIComponent(firmaComprador);
 		}
 	} else {
                
-		html2canvas(inputFirmaComprador).then(function(canvas) {
+		        var canvas=inputFirmaComprador;
 			var firmaComprador = canvas.toDataURL();
 			if (hayDatos) {
 				urlCompartida += "&";
@@ -231,8 +215,7 @@ function generarUrlCompartir() {
 				urlCompartida += "?";
 				hayDatos = true;
 			}
-			urlCompartida += "firma-comprador-p=" + firmaComprador;
-		});
+			urlCompartida += "firma-comprador-p=" + encodeURIComponent(firmaomprador);
              
        }
   location.href=urlCompartida;
