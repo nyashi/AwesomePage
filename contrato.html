@@ -191,7 +191,7 @@ function generarUrlCompartir() {
 				urlCompartida += "?";
 				hayDatos = true;
 			}
-			urlCompartida += "firma-vendedor-p=" + firmaVendedor;
+			urlCompartida += "firma-vendedor-p=" + encodeURIComponent(firmaVendedor);
 	}
 	var inputFirmaComprador = document.querySelector("#firma_comprador");
 	if (inputFirmaComprador.tagName === "INPUT") {
